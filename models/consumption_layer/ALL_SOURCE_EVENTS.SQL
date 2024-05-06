@@ -10,4 +10,9 @@
 with cte as(
 select * from {{ref('transformed')}}
 )
-select * from cte 
+select * , 
+       case 
+       when RESULT = 'FAILURE' then ABS(random())%5 + 1 
+       else 0
+       END AS severity
+       from cte 

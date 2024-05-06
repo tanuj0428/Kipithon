@@ -9,4 +9,11 @@ sources:
       - name: CLOUDWATCH_PARSED_ERROR_DATA
       - name: OKTA_EVENT_DATA
       - name: OKTA_PARSED_ERROR_DATA
+    
+  - name: SERVICE_NOW_CONSUMP
+    database: RAW_LAYER
+    schema: SERVICENOW_SCHEMA
+    tables:
+      - name: SERVICENOW_TABLE
+
 
