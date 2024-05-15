@@ -1,0 +1,26 @@
+models:
+  - name: transformed
+    description: This table contains the union of all the logs from both of the sources.
+    columns:
+      - name: REQUESTID
+        description: This is a unique identifier for the event.
+
+      - name: EVENT_DATE
+        description: This Column contains the date & timestamp of the Event generation.
+
+      - name: SOURCE_NAME
+        description: This column contains the Source name from which the log is generated(ie CloudWatcch,Okta).
+
+      - name: SOURCEIPADDRESS
+        description: This column contains the ipAddress of the user from which the logs got generated.
+
+      - name: RESULT
+        description: This column can be used to find out the alerts out off all the events.
+
+      - name: USERID
+        description: This Column displays the user id from which the log is generated
+
+      - name: NAME
+        description: This column displays the name of the user via userid.
+
+      
