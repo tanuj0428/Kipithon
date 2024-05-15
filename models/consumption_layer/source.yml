@@ -1,0 +1,19 @@
+version: 2
+
+sources:
+  - name: SERVICES_SCH_CONSUMP
+    database: RAW_LAYER
+    schema: SERVICES_SCH
+    tables:
+      - name: CLOUDWATCH_EVENT_DATA
+      - name: CLOUDWATCH_PARSED_ERROR_DATA
+      - name: OKTA_EVENT_DATA
+      - name: OKTA_PARSED_ERROR_DATA
+    
+  - name: SERVICE_NOW_CONSUMP
+    database: RAW_LAYER
+    schema: SERVICENOW_SCHEMA
+    tables:
+      - name: SERVICENOW_TABLE
+
+

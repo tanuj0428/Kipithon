@@ -1,0 +1,18 @@
+version: 2
+
+sources:
+  - name: SERVICES_SCH_TRANSFORM
+    database: RAW_LAYER
+    schema: SERVICES_SCH
+    tables:
+      - name: CLOUDWATCH_EVENT_DATA
+      - name: CLOUDWATCH_PARSED_ERROR_DATA
+      - name: OKTA_EVENT_DATA
+      - name: OKTA_PARSED_ERROR_DATA
+
+  - name: EMPLOYEE_DATA
+    database: EMPLOYEE_DB
+    schema: EMPLOYEE_DATA
+    tables:
+      - name: EMPLOYEE_IPADDR
+      - name: EMPLOYEE_INFO

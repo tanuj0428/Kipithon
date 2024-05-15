@@ -1,0 +1,179 @@
+models:
+  - name: ALL_SOURCE_EVENTS
+    description: This table contains the union of all the logs from both of the sources.
+    columns:
+      - name: REQUESTID
+        description: This is a unique identifier for the event.
+        tests:
+          - not_null
+
+      - name: EVENT_DATE
+        description: This Column contains the date & timestamp of the Event generation.
+        tests:
+          - not_null
+
+      - name: SOURCE_NAME
+        description: This column contains the Source name from which the log is generated(ie CloudWatcch,Okta).
+        tests:
+          - accepted_values:
+              values: ['CLOUDWATCH','OKTA']
+
+      - name: SOURCEIPADDRESS
+        description: This column contains the ipAddress of the user from which the logs got generated.
+        tests:
+          - not_null
+
+      - name: RESULT
+        description: This column can be used to find out the alerts out off all the events.
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['SUCCESS','FAILURE','CHALLENGE','ALLOW']
+
+      - name: USERID
+        description: This Column displays the user id from which the log is generated
+
+      - name: NAME
+        description: This column displays the name of the user via userid.
+
+      - name: SEVERITY
+        description: This column shows the severity of the alerts got generated.
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['0','1','2','3','4','5']
+
+      - name: CATEGORY
+        description: This column contains the Category of the alerts
+        tests:
+          - accepted_values:
+              values: ['SUSPICIOUS ACTIVITY', 'PHISING', 'MALWARE', 'FAILED LOGIN','CLOUDSECURITY ALERTS']
+
+  - name: DIM_SERVICE_NOW
+    description: This table contains all the data from ServiceNow Tool
+    columns:
+      - name: TICKET_ID
+        description: This is a unique column and contains the Ticket Id
+        tests:
+          - unique
+          - not_null
+      
+      - name: PROBLEM_SHORT_DESCRIPTION
+        description: This column containst a short description of the issue or alert
+        tests:
+          - not_null
+
+      - name: STATUS
+        description: This Column contains the Ticket status wheather the ticket is Solved or Not_null.
+        tests:
+          - accepted_values:
+              values: ['SOLVED','NOT SOLVED']
+
+      - name: SUMMARY
+        description: This Column contains the total summary of the ticket for which the ticket is raised.
+
+      - name: OPEN_TIME
+        description: This column contains the Date and Time stamp of when the Ticket has been raised.
+
+      - name: CLOSE_TIME
+        description: This column contains the Date and Time stamp of when the Ticket has been closed.
+
+  - name: DIM_CLOUDWATCH_ERROR_DATA
+    description: This dimension table contains all the Alerts which have been generated from Cloudwatch.
+    columns:
+      - name: requestID
+        description: This is a unique identifier for the Alerts.
+
+      - name: errorCode
+        description: This column contains the error code of the alerts
+
+      - name: errorMessage
+        description: This column contains the Description of the alerts generated.
+
+  - name: DIM_CLOUDWATCH_EVENT_DATA
+    description: This Dimension table contains all the Events which have been generated from Cloudwatch
+    columns:
+      - name: eventName
+        description: This column contains the name of the event for which the event log have been generated.
+
+      - name: awsRegion
+        description: This column contains the AWS Region from which the log has been generated.
+
+      - name: requestID
+        description: This is a unique identifier for the Events.
+
+      - name: AccountId
+        description: This column contains the AWS Account Id from which the Event log has been generated.
+
+      - name: eventType
+        description: This column contains the type of event for which the log has been generated.
+
+      - name: sourceIPAddress
+        description: This column contains the Ip address for which the log has generated.
+      
+      - name: eventTime
+        description: This column contains the Time at which the event log has been generated.
+
+      - name: eventCategory
+        description: This column contains the category of the event log generated.
+
+      - name: source_name
+        description: This column contains the Name of the source from which the log is generated.
+
+  - name: DIM_OKTA_ERROR_DATA
+    description: This Dimension table contains all the Alerts which have been generated from Okta
+    columns:
+      - name: requestID
+        description: This is a unique identifier for the Alerts.
+
+      - name: result
+        description: This column contains the result such as Success or Failure.
+
+      - name: reason
+        description: This column contains the reason for the Alert.
+
+  - name: DIM_OKTA_EVENT_DATA
+    description: This Dimension table contains all the Events which have been generated from Okta
+    columns:
+      - name: requestID
+        description: This is a unique identifier for the Events.
+
+      - name: user_id
+        description: This column contains the id of the user from which the event has been generated.
+
+      - name: email
+        description: This column contains the email address of the user.
+
+      - name: displayName
+        description: This column contains the Display Name of the user.
+
+      - name: os
+        description: This column contains the os from which the event has been generated.
+
+      - name: ipAddress
+        description: This column contains the Ip address for which the log has generated.
+
+      - name: city
+        description: This column contains the city name from which the log has been generated.
+
+      - name: state
+        description: This column contains the state name from which the log has been generated.
+      
+      - name: country
+        description: This column contains the country name from which the log has been generated.
+
+      - name: postalCode
+        description: This column contains the postal code from which the log has been generated.
+
+      - name: eventType
+        description: This column contains the type of event for which the log has been generated.
+
+      - name: result
+        description: This column can be used to find out the alerts out off all the events.
+
+      - name: published
+        description: This column contains the date and time stamp when the event log has been generated.
+
+      - name: source_name
+        description: This column contains the Source name from which the log is generated. 
+
